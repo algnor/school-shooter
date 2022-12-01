@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c77q731xkr18e"]
+
+[ext_resource type="PackedScene" uid="uid://c61hem6enrbdn" path="res://assets/models/Map.blend" id="1_5gcbx"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1hnb4"]
+
+[node name="map" type="Node3D"]
+
+[node name="mesh" parent="." instance=ExtResource("1_5gcbx")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(22.0524, 0, 0, 0, 1.00468, 0, 0, 0, 19.8157, 3.16412, 4, 0.20854)
+mesh = SubResource("PlaneMesh_1hnb4")
