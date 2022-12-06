@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqxht3q5v180p"]
+
+[ext_resource type="PackedScene" uid="uid://cv3caf3xgym0r" path="res://assets/scenes/Player.tscn" id="1_0ywbc"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lfbxb"]
+size = Vector2(50, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_upbyw"]
+data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
+
+[node name="Root" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_0ywbc")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16854, 2.02256)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_lfbxb")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_upbyw")
