@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp6or6agb83mh"]
+
+[ext_resource type="PackedScene" uid="uid://dhv30xkiou7yt" path="res://assets/scenes/GUI.tscn" id="1_ssba5"]
+
+[node name="test_level" type="Node3D"]
+
+[node name="GUI" parent="." instance=ExtResource("1_ssba5")]
