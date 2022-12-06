@@ -14,7 +14,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 750.0
@@ -23,7 +22,6 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 custom_minimum_size = Vector2(100, 150)
 layout_direction = 1
-layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -36,7 +34,6 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="StartButton" type="Button" parent="Panel/VBoxContainer" node_paths=PackedStringArray("shortcut_context")]
-layout_mode = 2
 offset_right = 600.0
 offset_bottom = 73.0
 size_flags_vertical = 4
@@ -48,7 +45,6 @@ text = "Start Game
 script = ExtResource("2_6vb7x")
 
 [node name="OptionsButton" type="Button" parent="Panel/VBoxContainer"]
-layout_mode = 2
 offset_top = 77.0
 offset_right = 600.0
 offset_bottom = 150.0
@@ -60,7 +56,6 @@ text = "Settings
 script = ExtResource("2_6vb7x")
 
 [node name="ExitButton" type="Button" parent="Panel/VBoxContainer"]
-layout_mode = 2
 offset_top = 154.0
 offset_right = 600.0
 offset_bottom = 227.0
@@ -73,7 +68,6 @@ script = ExtResource("2_6vb7x")
 
 [node name="Title" type="RichTextLabel" parent="Panel"]
 custom_minimum_size = Vector2(500, 200)
-layout_mode = 0
 offset_left = 50.0
 offset_top = 20.0
 offset_right = 550.0

@@ -7,10 +7,12 @@
 [node name="GUI" type="CanvasLayer"]
 
 [node name="options_menu" parent="." instance=ExtResource("1_56w12")]
+visible = false
 
 [node name="pause_menu" parent="." instance=ExtResource("2_ugphm")]
 visible = false
 
 [node name="background_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_x7kl7")
+volume_db = -15.0
 autoplay = true
