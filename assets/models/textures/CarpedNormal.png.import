@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8qc0ohfhlj7o"
+uid="uid://egv3shafg10j"
 path.s3tc="res://.godot/imported/CarpedNormal.png-4853198002c9240646b581fcd590d21f.s3tc.ctex"
 path.etc2="res://.godot/imported/CarpedNormal.png-4853198002c9240646b581fcd590d21f.etc2.ctex"
 metadata={
@@ -25,8 +25,8 @@ compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://assets/models/textures/CarpedNormal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
