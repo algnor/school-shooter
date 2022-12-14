@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://oem5kylvuws4"]
 
-[ext_resource type="Script" path="res://src/networking_menu.gd" id="1_svspx"]
+[ext_resource type="Script" path="res://src/menu/NetworkingMenu.gd" id="1_1n3gv"]
 [ext_resource type="FontFile" uid="uid://bsjfb87fqxgdc" path="res://assets/fonts/HoboStd.otf" id="2_muaa1"]
 
 [node name="Networking Menu" type="Control"]
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_svspx")
+script = ExtResource("1_1n3gv")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 9

@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://src/player/Player.gd" id="1_dkb0d"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_bw1ps"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_40kgi"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7ykmt"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dvsks"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_cpyls"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gm5lj"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/sync = true
@@ -16,11 +16,11 @@ script = ExtResource("1_dkb0d")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_bw1ps")
+mesh = SubResource("CapsuleMesh_40kgi")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_7ykmt")
+shape = SubResource("CapsuleShape3D_dvsks")
 
 [node name="CameraOrbit" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
@@ -29,4 +29,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_cpyls")
+replication_config = SubResource("SceneReplicationConfig_gm5lj")

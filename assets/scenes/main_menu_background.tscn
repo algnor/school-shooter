@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bja24kn888bh1"]
 
-[ext_resource type="Script" path="res://src/main_menu/path_follow.gd" id="1_ga66e"]
 [ext_resource type="Environment" uid="uid://bpujiwiej4whg" path="res://assets/resources/Environment.tres" id="1_ldtuk"]
+[ext_resource type="Script" path="res://src/menu/PathFollow.gd" id="1_pmx1j"]
 [ext_resource type="PackedScene" uid="uid://du8qfs8l6ekyg" path="res://assets/scenes/map.tscn" id="3_itlps"]
 
 [sub_resource type="Curve3D" id="Curve3D_nil7q"]
@@ -21,7 +21,7 @@ curve = SubResource("Curve3D_nil7q")
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
 transform = Transform3D(-0.965667, 0, -0.259155, 0, 1, 0, 0.259155, 0, -0.965667, -10.4658, -4.00543e-05, 14.9681)
 progress = 7.38858
-script = ExtResource("1_ga66e")
+script = ExtResource("1_pmx1j")
 
 [node name="Camera3D" type="Camera3D" parent="Path3D/PathFollow3D"]
 transform = Transform3D(-1.00016, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1.00016, 0, 0, 0)

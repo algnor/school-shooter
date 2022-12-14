@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://btgh0k6ubqfih"]
 
-[ext_resource type="Script" path="res://src/test_level.gd" id="1_05pnr"]
-[ext_resource type="PackedScene" path="res://assets/scenes/GUI.tscn" id="1_ssba5"]
+[ext_resource type="Script" path="res://src/map/TestLevel.gd" id="1_nukrj"]
+[ext_resource type="PackedScene" uid="uid://cjlby8uvy8g67" path="res://assets/scenes/GUI.tscn" id="1_ssba5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t064r"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -27,7 +27,7 @@ size = Vector2(20, 20)
 data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10)
 
 [node name="test_level" type="Node3D"]
-script = ExtResource("1_05pnr")
+script = ExtResource("1_nukrj")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gthd6")
