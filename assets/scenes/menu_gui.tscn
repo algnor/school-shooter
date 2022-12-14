@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bckxyqhxu3osk"]
+
+[ext_resource type="PackedScene" uid="uid://dc2wnx4pct8q0" path="res://assets/scenes/main_menu.tscn" id="1_h74pu"]
+[ext_resource type="PackedScene" uid="uid://dihbql2d501yi" path="res://assets/scenes/networking_menu.tscn" id="2_s8svr"]
+[ext_resource type="AudioStream" uid="uid://dt2c0utq0ja8m" path="res://assets/sound/music/the_shire.ogg" id="3_peg58"]
+
+[node name="Menu GUI" type="CanvasLayer"]
+
+[node name="Main Menu" parent="." instance=ExtResource("1_h74pu")]
+
+[node name="Networking Menu" parent="." instance=ExtResource("2_s8svr")]
+visible = false
+
+[node name="Main Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_peg58")
+autoplay = true

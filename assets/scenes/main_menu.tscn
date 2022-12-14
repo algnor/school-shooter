@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc2wnx4pct8q0"]
+[gd_scene load_steps=3 format=3 uid="uid://dc2wnx4pct8q0"]
 
 [ext_resource type="FontFile" uid="uid://bsjfb87fqxgdc" path="res://assets/fonts/HoboStd.otf" id="1_dstm6"]
 [ext_resource type="Script" path="res://src/main_menu/main_menu.gd" id="2_6vb7x"]
-[ext_resource type="AudioStream" uid="uid://dt2c0utq0ja8m" path="res://assets/sound/music/the_shire.ogg" id="3_80bhs"]
-[ext_resource type="Script" path="res://src/main_menu/main_music.gd" id="3_uu0iw"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -12,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_6vb7x")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 9
@@ -42,7 +41,6 @@ theme_override_fonts/font = ExtResource("1_dstm6")
 theme_override_font_sizes/font_size = 64
 text = "Start Game
 "
-script = ExtResource("2_6vb7x")
 
 [node name="OptionsButton" type="Button" parent="Panel/VBoxContainer"]
 offset_top = 77.0
@@ -53,7 +51,6 @@ theme_override_fonts/font = ExtResource("1_dstm6")
 theme_override_font_sizes/font_size = 64
 text = "Settings
 "
-script = ExtResource("2_6vb7x")
 
 [node name="ExitButton" type="Button" parent="Panel/VBoxContainer"]
 offset_top = 154.0
@@ -64,7 +61,6 @@ theme_override_fonts/font = ExtResource("1_dstm6")
 theme_override_font_sizes/font_size = 64
 text = "Exit Game
 "
-script = ExtResource("2_6vb7x")
 
 [node name="Title" type="RichTextLabel" parent="Panel"]
 custom_minimum_size = Vector2(500, 200)
@@ -77,12 +73,6 @@ theme_override_font_sizes/normal_font_size = 128
 text = "School Shooter"
 scroll_active = false
 
-[node name="Main Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_80bhs")
-autoplay = true
-script = ExtResource("3_uu0iw")
-
-[connection signal="pressed" from="Panel/VBoxContainer/StartButton" to="Panel/VBoxContainer/StartButton" method="_on_start_button_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/StartButton" to="Panel/VBoxContainer/StartButton" method="_on_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/OptionsButton" to="Panel/VBoxContainer/OptionsButton" method="_on_options_button_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/ExitButton" to="Panel/VBoxContainer/ExitButton" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
