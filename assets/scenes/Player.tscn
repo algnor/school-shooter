@@ -1,23 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://cv3caf3xgym0r"]
 
-[ext_resource type="Script" path="res://src/player/Player.gd" id="1_jeorc"]
+[ext_resource type="Script" path="res://src/player/Player.gd" id="1_dkb0d"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_78dxl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rs7mi"]
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-script = ExtResource("1_jeorc")
+script = ExtResource("1_dkb0d")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_78dxl")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_rs7mi")
 
 [node name="CameraOrbit" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraOrbit"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
