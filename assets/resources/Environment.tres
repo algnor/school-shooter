@@ -10,5 +10,4 @@ background_mode = 2
 sky = SubResource("Sky_waiav")
 ssao_enabled = true
 ssao_intensity = 1.37
-ssil_enabled = true
 volumetric_fog_density = 0.068

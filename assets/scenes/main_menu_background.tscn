@@ -22,7 +22,6 @@ curve = SubResource("Curve3D_nil7q")
 transform = Transform3D(-0.965667, 0, -0.259155, 0, 1, 0, 0.259155, 0, -0.965667, -10.4658, -4.00543e-05, 14.9681)
 progress = 7.38858
 script = ExtResource("1_ga66e")
-speed = 2.0
 
 [node name="Camera3D" type="Camera3D" parent="Path3D/PathFollow3D"]
 transform = Transform3D(-1.00016, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1.00016, 0, 0, 0)
