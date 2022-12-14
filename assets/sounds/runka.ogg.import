@@ -2,7 +2,7 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://d0gq2fs4rxmau"
+uid="uid://c7275yiiigpl5"
 path="res://.godot/imported/runka.ogg-d106136504c3ae482cc8a275b156f544.oggvorbisstr"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/runka.ogg-d106136504c3ae482cc8a275b156f544.og
 [params]
 
 loop=true
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

@@ -1,0 +1,13 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://bpujiwiej4whg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vkaem"]
+
+[sub_resource type="Sky" id="Sky_waiav"]
+sky_material = SubResource("ProceduralSkyMaterial_vkaem")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_waiav")
+ssao_enabled = true
+ssao_intensity = 1.37
+volumetric_fog_density = 0.068

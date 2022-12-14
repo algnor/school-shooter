@@ -27,6 +27,17 @@ data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0,
 environment = SubResource("Environment_nww1n")
 
 [node name="Player" parent="." instance=ExtResource("1_0ywbc")]
+p_speed = null
+p_sprint_speed = null
+p_jump_velocity = null
+p_crouch_speed = null
+p_height = null
+p_height_crouch = null
+p_eye_height = null
+p_eye_height_crouch = null
+cam_look_sensitivity = null
+cam_min_angle = null
+cam_max_angle = null
 
 [node name="Plane" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_lfbxb")

@@ -25,9 +25,12 @@ var _crouch : bool = false;
 
 var _gravity = ProjectSettings.get_setting("physics/3d/default_gravity");
 
-@onready var camera = $CameraOrbit;
-@onready var mesh_i = $Mesh;
-@onready var collider = $Collider;
+# Nodes
+@onready var camera   := $CameraOrbit;
+@onready var camera3d := $CameraOrbit/Camera3D;
+@onready var mesh_i   := $Mesh;
+@onready var collider := $Collider;
+@onready var syncro   := $MultiplayerSynchronizer;
 
 func _reload_vars() -> void:
     camera.position.y = p_eye_height;
@@ -39,23 +42,27 @@ func _reload_vars() -> void:
     collider.position.y = p_height/2;
 
 func _input(e: InputEvent) -> void:
-    if e is InputEventMouseButton:
-        Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
-    elif e.is_action_pressed("ui_cancel"):
-        Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
+    if not syncro.is_multiplayer_authority():
+        return;
 
-    if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED \
-        and e is InputEventMouseMotion:
+    if not GlobalVariables.paused and e is InputEventMouseMotion:
         _mouse_delta = e.relative;
 
+func _enter_tree() -> void:
+    $MultiplayerSynchronizer.set_multiplayer_authority(int(str(name)));
+
 func _ready() -> void:
-    print("Player.gd loaded");
+    print("Player.gd:", str(name));
+    camera3d.current = syncro.is_multiplayer_authority();
+
     _reload_vars();
-    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED;
 
 func _process(dt: float) -> void:
+    if not syncro.is_multiplayer_authority():
+        return;
+
     # Input handling
-    if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+    if not GlobalVariables.paused:
         _move_vector = Input.get_vector("move_left", "move_right",
                                         "move_forward", "move_backward");
         _jump = Input.is_action_pressed("move_jump", false);
@@ -77,6 +84,9 @@ func _process(dt: float) -> void:
     # TODO: update hitbox when crouched, p_crouch_height
 
 func _physics_process(dt: float) -> void:
+    if not syncro.is_multiplayer_authority():
+        return;
+
     if not is_on_floor():
         velocity.y -= _gravity * dt;
 
