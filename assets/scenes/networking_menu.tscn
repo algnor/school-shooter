@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://oem5kylvuws4"]
 
 [ext_resource type="Script" path="res://src/menu/NetworkingMenu.gd" id="1_1n3gv"]
-[ext_resource type="FontFile" uid="uid://bsjfb87fqxgdc" path="res://assets/fonts/HoboStd.otf" id="2_muaa1"]
+[ext_resource type="FontFile" uid="uid://bsjfb87fqxgdc" path="res://assets/fonts/hobo_std.otf" id="2_muaa1"]
 
 [node name="Networking Menu" type="Control"]
 layout_mode = 3

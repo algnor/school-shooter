@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bsjfb87fqxgdc"
-path="res://.godot/imported/HoboStd.otf-248925bbe9462292a8e7a35ca69078a9.fontdata"
+path="res://.godot/imported/hobo_std.otf-0904702bb418bfff2ad155778c2c5a61.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/HoboStd.otf"
-dest_files=["res://.godot/imported/HoboStd.otf-248925bbe9462292a8e7a35ca69078a9.fontdata"]
+source_file="res://assets/fonts/hobo_std.otf"
+dest_files=["res://.godot/imported/hobo_std.otf-0904702bb418bfff2ad155778c2c5a61.fontdata"]
 
 [params]
 

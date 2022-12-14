@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dc2wnx4pct8q0"]
 
-[ext_resource type="FontFile" uid="uid://bsjfb87fqxgdc" path="res://assets/fonts/HoboStd.otf" id="1_dstm6"]
+[ext_resource type="FontFile" uid="uid://bsjfb87fqxgdc" path="res://assets/fonts/hobo_std.otf" id="1_dstm6"]
 [ext_resource type="Script" path="res://src/menu/MainMenu.gd" id="1_ltdhc"]
 
 [node name="Main Menu" type="Control"]
