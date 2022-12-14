@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://id3vxcaile5b"]
 
-[ext_resource type="PackedScene" uid="uid://dbh8oj86jefmv" path="res://assets/scenes/menu_gui.tscn" id="1_5w03o"]
+[ext_resource type="PackedScene" uid="uid://vmavw4ohh5rx" path="res://assets/scenes/menu_gui.tscn" id="1_5w03o"]
 [ext_resource type="PackedScene" uid="uid://du8qfs8l6ekyg" path="res://assets/scenes/map.tscn" id="1_e3ke1"]
 
 [node name="Menu" type="Node3D"]

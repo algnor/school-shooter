@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbxw3ikotofqq"]
+[gd_scene load_steps=3 format=3 uid="uid://oem5kylvuws4"]
 
 [ext_resource type="Script" path="res://src/networking_menu.gd" id="1_svspx"]
 [ext_resource type="FontFile" uid="uid://bsjfb87fqxgdc" path="res://assets/fonts/HoboStd.otf" id="2_muaa1"]
@@ -13,7 +13,6 @@ grow_vertical = 2
 script = ExtResource("1_svspx")
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 750.0
@@ -23,7 +22,6 @@ scale = Vector2(0.998, 1.002)
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 custom_minimum_size = Vector2(100, 150)
 layout_direction = 1
-layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -36,21 +34,26 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Ip" type="LineEdit" parent="Panel/VBoxContainer"]
-layout_mode = 2
+offset_right = 600.0
+offset_bottom = 31.0
 text = "127.0.0.1"
 placeholder_text = "Ip"
 alignment = 1
 max_length = 15
 
 [node name="Port" type="LineEdit" parent="Panel/VBoxContainer"]
-layout_mode = 2
+offset_top = 35.0
+offset_right = 600.0
+offset_bottom = 66.0
 text = "42069"
 placeholder_text = "Port"
 alignment = 1
 max_length = 5
 
 [node name="JoinButton" type="Button" parent="Panel/VBoxContainer"]
-layout_mode = 2
+offset_top = 70.0
+offset_right = 600.0
+offset_bottom = 143.0
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_muaa1")
 theme_override_font_sizes/font_size = 64
@@ -58,7 +61,9 @@ text = "Join
 "
 
 [node name="HostButton" type="Button" parent="Panel/VBoxContainer"]
-layout_mode = 2
+offset_top = 147.0
+offset_right = 600.0
+offset_bottom = 220.0
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_muaa1")
 theme_override_font_sizes/font_size = 64
@@ -67,7 +72,6 @@ text = "Host
 
 [node name="Title" type="RichTextLabel" parent="Panel"]
 custom_minimum_size = Vector2(500, 200)
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -83,5 +87,5 @@ bbcode_enabled = true
 text = "[center]School Shooter[/center]"
 scroll_active = false
 
-[connection signal="pressed" from="Panel/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/JoinButton" to="." method="_on_connect" binds= [false]]
+[connection signal="pressed" from="Panel/VBoxContainer/HostButton" to="." method="_on_connect" binds= [true]]
