@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bji636nct0i1p"
+path="res://.godot/imported/Tripod.obj-b622ab882ae08472720f9293db69cd0f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Tripod.obj-b622ab882ae08472720f9293db69cd0f.mesh"]
+
+source_file="res://assets/models/Ultimate Gun Pack by Quaternius/OBJ/Accessories/Tripod.obj"
+dest_files=["res://.godot/imported/Tripod.obj-b622ab882ae08472720f9293db69cd0f.mesh", "res://.godot/imported/Tripod.obj-b622ab882ae08472720f9293db69cd0f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

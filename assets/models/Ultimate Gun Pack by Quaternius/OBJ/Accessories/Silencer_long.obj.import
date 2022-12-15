@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://drmqsurah37gm"
+path="res://.godot/imported/Silencer_long.obj-ce2736a62ac3e2eddbc6b69184393e2b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Silencer_long.obj-ce2736a62ac3e2eddbc6b69184393e2b.mesh"]
+
+source_file="res://assets/models/Ultimate Gun Pack by Quaternius/OBJ/Accessories/Silencer_long.obj"
+dest_files=["res://.godot/imported/Silencer_long.obj-ce2736a62ac3e2eddbc6b69184393e2b.mesh", "res://.godot/imported/Silencer_long.obj-ce2736a62ac3e2eddbc6b69184393e2b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
