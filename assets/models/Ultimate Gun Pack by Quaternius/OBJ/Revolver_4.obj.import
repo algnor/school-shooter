@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b3p66ygwwh78i"
+path="res://.godot/imported/Revolver_4.obj-ab19f01c956e94edb6610256425e5e75.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Revolver_4.obj-ab19f01c956e94edb6610256425e5e75.mesh"]
+
+source_file="res://assets/models/Ultimate Gun Pack by Quaternius/OBJ/Revolver_4.obj"
+dest_files=["res://.godot/imported/Revolver_4.obj-ab19f01c956e94edb6610256425e5e75.mesh", "res://.godot/imported/Revolver_4.obj-ab19f01c956e94edb6610256425e5e75.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

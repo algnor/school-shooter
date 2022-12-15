@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cv3caf3xgym0r"]
+
+[ext_resource type="Script" path="res://src/player/Player.gd" id="1_dkb0d"]
+[ext_resource type="PackedScene" uid="uid://bu188s5y5444w" path="res://assets/scenes/pistol.tscn" id="2_yw4qi"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tbwfq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ihj6i"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ppoiy"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_dkb0d")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_tbwfq")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ihj6i")
+
+[node name="CameraOrbit" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraOrbit"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+current = true
+
+[node name="Pistol" parent="CameraOrbit/Camera3D" instance=ExtResource("2_yw4qi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.274, -0.227, -0.324)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ppoiy")

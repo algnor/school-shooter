@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://3b6iy7fm3hqr"]
 
-[ext_resource type="FontFile" uid="uid://bsjfb87fqxgdc" path="res://assets/fonts/HoboStd.otf" id="1_fs53a"]
-[ext_resource type="Script" path="res://src/pause_menu.gd" id="1_wqeuo"]
+[ext_resource type="Script" path="res://src/menu/PauseMenu.gd" id="1_718f0"]
+[ext_resource type="FontFile" uid="uid://bsjfb87fqxgdc" path="res://assets/fonts/hobo_std.otf" id="2_ynhqd"]
 
 [node name="pause_menu" type="Control"]
 process_mode = 3
@@ -11,9 +11,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_wqeuo")
+script = ExtResource("1_718f0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,6 +23,7 @@ grow_vertical = 2
 color = Color(0.156863, 0.156863, 0.156863, 0.588235)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -30,17 +32,13 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 custom_minimum_size = Vector2(350, 0)
-offset_left = 785.0
-offset_top = 266.0
-offset_right = 1135.0
-offset_bottom = 814.0
+layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 50
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
-offset_right = 350.0
-offset_bottom = 129.0
-theme_override_fonts/normal_font = ExtResource("1_fs53a")
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_ynhqd")
 theme_override_font_sizes/normal_font_size = 128
 text = "Pause"
 fit_content_height = true
@@ -48,34 +46,24 @@ autowrap_mode = 0
 tab_size = 24
 
 [node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
-layout_mode = 3
-anchors_preset = 0
-offset_top = 179.0
-offset_right = 350.0
-offset_bottom = 179.0
+layout_mode = 2
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
-offset_top = 229.0
-offset_right = 350.0
-offset_bottom = 302.0
-theme_override_fonts/font = ExtResource("1_fs53a")
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ynhqd")
 theme_override_font_sizes/font_size = 64
 text = "Resume
 "
 
 [node name="Button3" type="Button" parent="CenterContainer/VBoxContainer"]
-offset_top = 352.0
-offset_right = 350.0
-offset_bottom = 425.0
-theme_override_fonts/font = ExtResource("1_fs53a")
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ynhqd")
 theme_override_font_sizes/font_size = 64
 text = "Options"
 
 [node name="Button2" type="Button" parent="CenterContainer/VBoxContainer"]
-offset_top = 475.0
-offset_right = 350.0
-offset_bottom = 548.0
-theme_override_fonts/font = ExtResource("1_fs53a")
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ynhqd")
 theme_override_font_sizes/font_size = 64
 text = "Quit
 "

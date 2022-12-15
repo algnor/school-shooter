@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cp6or6agb83mh"]
+[gd_scene load_steps=9 format=3 uid="uid://btgh0k6ubqfih"]
 
-[ext_resource type="PackedScene" uid="uid://dhv30xkiou7yt" path="res://assets/scenes/GUI.tscn" id="1_ssba5"]
-[ext_resource type="PackedScene" uid="uid://c3ig7j0i02phl" path="res://assets/scenes/player.tscn" id="2_2fpaq"]
+[ext_resource type="Script" path="res://src/map/TestLevel.gd" id="1_nukrj"]
+[ext_resource type="PackedScene" uid="uid://cjlby8uvy8g67" path="res://assets/scenes/GUI.tscn" id="1_ssba5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t064r"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -16,29 +16,43 @@ sky = SubResource("Sky_xh1mk")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ovp34"]
+albedo_color = Color(0.337255, 0, 0, 1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_7755m"]
+material = SubResource("StandardMaterial3D_ovp34")
 size = Vector2(20, 20)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_sb5dq"]
 data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10)
 
 [node name="test_level" type="Node3D"]
+script = ExtResource("1_nukrj")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gthd6")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 26.7923, 0)
 shadow_enabled = true
 
 [node name="GUI" parent="." instance=ExtResource("1_ssba5")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Plane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh = SubResource("PlaneMesh_7755m")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_sb5dq")
 
-[node name="Player" parent="." instance=ExtResource("2_2fpaq")]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.173459, 0.685501, 0, 0.969445, 0.245307, -0.707107, -0.173459, 0.685501, 9, 3, 9)
+current = true
+
+[node name="Players" type="Node3D" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://assets/scenes/Player.tscn")
+spawn_path = NodePath("../Players")

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dsxh75jmpeqhg"
+path="res://.godot/imported/Pistol_3.obj-345129e6533172ed58d8a6c64df4368b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Pistol_3.obj-345129e6533172ed58d8a6c64df4368b.mesh"]
+
+source_file="res://assets/models/Ultimate Gun Pack by Quaternius/OBJ/Pistol_3.obj"
+dest_files=["res://.godot/imported/Pistol_3.obj-345129e6533172ed58d8a6c64df4368b.mesh", "res://.godot/imported/Pistol_3.obj-345129e6533172ed58d8a6c64df4368b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
