@@ -18,4 +18,6 @@ func _on_resume_button_pressed():
     # Input.set_mouse_mode(Input.MOUSE_MODE_CAPUTRED);
 
 func _on_quit_button_pressed():
-    get_tree().quit();
+    GlobalVariables.camera_set = false;
+    get_tree().change_scene_to_file("res://assets/scenes/menu.tscn");
+    multiplayer.multiplayer_peer.close();
