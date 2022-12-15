@@ -28,6 +28,7 @@ var _skill_func := Callable(self, "_dummy_skill");
 @onready var mesh_i   := $Mesh;
 @onready var collider := $Collider;
 @onready var syncro   := $MultiplayerSynchronizer;
+@onready var gun      := $CameraOrbit/Pistol;
 
 func _dummy_skill(_p: Player) -> void:
     pass

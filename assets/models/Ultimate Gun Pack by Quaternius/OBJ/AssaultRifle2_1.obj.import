@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://r4ter3r4xgy0"
+path="res://.godot/imported/AssaultRifle2_1.obj-3b1744b334e61017f8009dfa63b47fb6.mesh"
+
+[deps]
+
+files=["res://.godot/imported/AssaultRifle2_1.obj-3b1744b334e61017f8009dfa63b47fb6.mesh"]
+
+source_file="res://assets/models/Ultimate Gun Pack by Quaternius/OBJ/AssaultRifle2_1.obj"
+dest_files=["res://.godot/imported/AssaultRifle2_1.obj-3b1744b334e61017f8009dfa63b47fb6.mesh", "res://.godot/imported/AssaultRifle2_1.obj-3b1744b334e61017f8009dfa63b47fb6.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

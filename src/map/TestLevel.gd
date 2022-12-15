@@ -8,7 +8,7 @@ func _ready():
         multiplayer.multiplayer_peer = multiplayer_peer;
         multiplayer_peer.peer_connected.connect(func(id) : add_player_character(id));
         add_player_character();
-    
+
     else:
         multiplayer_peer.create_client(
             GlobalVariables.network_ip,

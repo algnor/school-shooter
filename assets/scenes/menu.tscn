@@ -1,13 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://id3vxcaile5b"]
+[gd_scene load_steps=2 format=3 uid="uid://id3vxcaile5b"]
 
 [ext_resource type="PackedScene" uid="uid://vmavw4ohh5rx" path="res://assets/scenes/menu_gui.tscn" id="1_5w03o"]
-[ext_resource type="PackedScene" uid="uid://du8qfs8l6ekyg" path="res://assets/scenes/map.tscn" id="1_e3ke1"]
 
 [node name="Menu" type="Node3D"]
 
-[node name="map" parent="." instance=ExtResource("1_e3ke1")]
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.120137, 0.0554172, -0.991209, 0, 0.998441, 0.0558215, 0.992757, 0.00670622, -0.11995, -13, 1.906, 3.5)
-
-[node name="Menu GUI" parent="Camera3D" instance=ExtResource("1_5w03o")]
+[node name="Camera3D@Menu GUI" parent="." instance=ExtResource("1_5w03o")]
