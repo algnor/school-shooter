@@ -5,6 +5,7 @@ var network_is_host : bool = false;
 var network_ip : String = "127.0.0.1";
 
 var paused : bool = false : set = _set_paused;
+var camera_set : bool = false;
 
 func _set_paused(val: bool):
     paused = val;

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://pe8w0jo6t10r"]
+
+[ext_resource type="Script" path="res://src/player/BaseCharacter.gd" id="1_nq6tf"]
+[ext_resource type="Script" path="res://src/player/JoakimSkills.gd" id="2_1puv8"]
+
+[resource]
+script = ExtResource("1_nq6tf")
+speed = 5.0
+speed_sprint = 15.0
+speed_crouch = 1.0
+jump_velocity = 5.0
+crouch_speed = 0.1
+height = 2.0
+height_crouch = 1.5
+eye_height = 1.8
+eye_height_crouch = 1.2
+skills_object = ExtResource("2_1puv8")
+function_shoot = "_shoot"
+function_skill = "_skill"
+metadata/_editor_prop_ptr_skills_object = NodePath("")
