@@ -20,6 +20,9 @@ glow_enabled = true
 [node name="test_level" type="Node3D"]
 script = ExtResource("1_nukrj")
 
+[node name="Map" parent="." instance=ExtResource("3_bjvqx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7317, -1.00005, -11.278)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gthd6")
 
@@ -34,6 +37,3 @@ shadow_enabled = true
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://assets/scenes/player/Player.tscn")
 spawn_path = NodePath("../Players")
-
-[node name="Map" parent="." instance=ExtResource("3_bjvqx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7317, -1.00005, -11.278)

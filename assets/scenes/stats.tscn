@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://mdyne8rwpv33"]
+[gd_scene load_steps=10 format=3 uid="uid://co0qjwbd8sxd7"]
 
+[ext_resource type="Script" path="res://src/menu/Stats.gd" id="1_2n2s2"]
 [ext_resource type="Texture2D" uid="uid://cnuhid37iolfr" path="res://assets/resources/Life Bars/Life Bars/Horizontal/Backs/Back6.png" id="1_b5baw"]
 [ext_resource type="Texture2D" uid="uid://cn41q0qnj2g3f" path="res://assets/resources/Life Bars/Life Bars/Horizontal/Boarders/Boarder1.png" id="2_1s5i5"]
 [ext_resource type="Texture2D" uid="uid://ce4yyhex0gvee" path="res://assets/resources/Life Bars/Life Bars/Horizontal/Bars/Bar1.png" id="3_a5bgw"]
@@ -25,9 +26,11 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2n2s2")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
-layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -44,7 +47,6 @@ texture_over = ExtResource("2_1s5i5")
 texture_progress = ExtResource("3_a5bgw")
 
 [node name="Ammo" type="RichTextLabel" parent="."]
-layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -59,8 +61,7 @@ text = "30/30"
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Ability" type="TextureProgressBar" parent="."]
-layout_mode = 1
+[node name="Skill" type="TextureProgressBar" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0

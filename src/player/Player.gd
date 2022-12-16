@@ -44,13 +44,16 @@ func _set_ammo(val: int) -> void:
     ammo = val;
 
 # Nodes
-@onready var camera   := $CameraOrbit;
-@onready var camera3d := $CameraOrbit/Camera3D;
-@onready var mesh_i   := $Mesh;
-@onready var collider := $Collider;
-@onready var syncro   := $MultiplayerSynchronizer;
-@onready var gun      := $CameraOrbit/Pistol;
-@onready var ray      := $CameraOrbit/ShootRay;
+@onready var camera    := $CameraOrbit;
+@onready var camera3d  := $CameraOrbit/Camera3D;
+@onready var mesh_i    := $Mesh;
+@onready var collider  := $Collider;
+@onready var syncro    := $MultiplayerSynchronizer;
+@onready var gun       := $CameraOrbit/Pistol;
+@onready var ray       := $CameraOrbit/ShootRay;
+@onready var gui       := get_node("/root/test_level/GUI");
+@onready var stats     := gui.get_node("Stats");
+@onready var death_scr := gui.get_node("DeathScreen");
 
 # Timers
 @onready var timer_shoot  := $Timers/Shoot;
@@ -89,6 +92,11 @@ func _reload_vars() -> void:
     health = c.max_health;
     ammo = c.max_ammo;
 
+    # visible = true;
+    dead = false;
+    death_scr.visible = false;
+    position = Vector3.ZERO;
+
 # Public methods
 func shoot(consume: bool = true):
     # TODO: shoot from weapon
@@ -98,7 +106,7 @@ func shoot(consume: bool = true):
         print("hit: ", str(ray.get_collider().name));
         return ray.get_collider();
 
-@rpc(any_peer)
+@rpc(any_peer, call_local)
 func die():
     print("Player:", str(name), " died");
     dead = true;
@@ -116,7 +124,7 @@ func take_damage(damage):
         " dmg (", health, "/", c.max_health, ")");
     if health <= 0:
         print("health <= 0");
-        rpc("die");
+        die();
 
 # Lifecycle
 func _input(e: InputEvent) -> void:
@@ -139,6 +147,7 @@ func _ready() -> void:
         camera3d.current = false;
 
     if syncro.is_multiplayer_authority():
+        GlobalVariables.current_player = self;
         _reload_vars();
 
 func _process(dt: float) -> void:
@@ -190,6 +199,17 @@ func _process(dt: float) -> void:
         _reload_func.call(self);
         _is_reloading = true;
         timer_reload.start(c.timeout_reload);
+
+    # Update stats
+    stats.update_health(health, c.max_health);
+    stats.update_ammo(ammo, c.max_ammo);
+    stats.update_skill(timer_skill.time_left, timer_skill.wait_time);
+
+    if dead:
+        death_scr.visible = true;
+        # visible = false;
+        position = Vector3.UP * 100;
+        GlobalVariables.paused = true;
 
 func _physics_process(dt: float) -> void:
     if not syncro.is_multiplayer_authority() or dead:

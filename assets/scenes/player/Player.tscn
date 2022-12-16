@@ -4,11 +4,11 @@
 [ext_resource type="Resource" uid="uid://pe8w0jo6t10r" path="res://assets/resources/characters/joakim.tres" id="2_20gwn"]
 [ext_resource type="PackedScene" uid="uid://cu2rhsau76ixe" path="res://assets/scenes/player/Pistol.tscn" id="2_yw4qi"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_reecn"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_opl7r"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_042ap"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_curqk"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8b8pv"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_dbc1q"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/sync = true
@@ -31,11 +31,11 @@ c = ExtResource("2_20gwn")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_reecn")
+mesh = SubResource("CapsuleMesh_opl7r")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_042ap")
+shape = SubResource("CapsuleShape3D_curqk")
 
 [node name="CameraOrbit" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
@@ -61,7 +61,7 @@ one_shot = true
 one_shot = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_8b8pv")
+replication_config = SubResource("SceneReplicationConfig_dbc1q")
 
 [connection signal="timeout" from="Timers/Shoot" to="." method="_reset_timeout" binds= [0]]
 [connection signal="timeout" from="Timers/Skill" to="." method="_reset_timeout" binds= [1]]

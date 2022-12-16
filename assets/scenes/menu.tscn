@@ -4,4 +4,4 @@
 
 [node name="Menu" type="Node3D"]
 
-[node name="Camera3D@Menu GUI" parent="." instance=ExtResource("1_5w03o")]
+[node name="MenuGUI" parent="." instance=ExtResource("1_5w03o")]
