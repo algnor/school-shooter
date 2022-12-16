@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://src/player/Player.gd" id="1_dkb0d"]
 [ext_resource type="Resource" uid="uid://pe8w0jo6t10r" path="res://assets/resources/characters/joakim.tres" id="2_20gwn"]
-[ext_resource type="PackedScene" path="res://assets/scenes/pistol.tscn" id="2_yw4qi"]
+[ext_resource type="PackedScene" uid="uid://cu2rhsau76ixe" path="res://assets/scenes/player/Pistol.tscn" id="2_yw4qi"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_s6h03"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_reecn"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p3gk3"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_042ap"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gtwiy"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8b8pv"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/sync = true
@@ -31,11 +31,11 @@ c = ExtResource("2_20gwn")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_s6h03")
+mesh = SubResource("CapsuleMesh_reecn")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_p3gk3")
+shape = SubResource("CapsuleShape3D_042ap")
 
 [node name="CameraOrbit" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
@@ -49,14 +49,20 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.274
 [node name="ShootRay" type="RayCast3D" parent="CameraOrbit"]
 target_position = Vector3(0, 0, 50)
 
-[node name="Timers" type="Node3D" parent="."]
+[node name="Timers" type="Node" parent="."]
 
 [node name="Shoot" type="Timer" parent="Timers"]
+one_shot = true
 
 [node name="Skill" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="Reload" type="Timer" parent="Timers"]
+one_shot = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_gtwiy")
+replication_config = SubResource("SceneReplicationConfig_8b8pv")
 
 [connection signal="timeout" from="Timers/Shoot" to="." method="_reset_timeout" binds= [0]]
 [connection signal="timeout" from="Timers/Skill" to="." method="_reset_timeout" binds= [1]]
+[connection signal="timeout" from="Timers/Reload" to="." method="_reset_timeout" binds= [2]]

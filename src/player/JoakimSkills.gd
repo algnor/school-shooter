@@ -6,3 +6,7 @@ static func _shoot(p: Player) -> void:
 static func _skill(p: Player) -> void:
     print(p.name, " used skill");
     print(p.name, " hp:", p.health, " ammo:", p.ammo, " dead:", p.dead);
+
+static func _reload(p: Player) -> void:
+    print(p.name, " reloaded");
+    p.gun.reload();

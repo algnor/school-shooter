@@ -22,13 +22,17 @@ var _sprint : bool = false;
 var _crouch : bool = false;
 var _shoot : bool = false;
 var _skill : bool = false;
+var _reload : bool = false;
 
 var _gravity = ProjectSettings.get_setting("physics/3d/default_gravity");
 var _shoot_func := Callable(self, "_dummy_skill");
 var _skill_func := Callable(self, "_dummy_skill");
+var _reload_func := Callable(self, "_dummy_skill");
 var _can_shoot : bool = true;
 var _can_skill : bool = true;
+var _is_reloading : bool = false;
 
+# HACK: Used for debugging, remove later
 func _set_hp(val: int) -> void:
     if health != val:
         print("Player:", name, " modified HP ", health, "->", val);
@@ -49,8 +53,9 @@ func _set_ammo(val: int) -> void:
 @onready var ray      := $CameraOrbit/ShootRay;
 
 # Timers
-@onready var timer_shoot := $Timers/Shoot;
-@onready var timer_skill := $Timers/Skill;
+@onready var timer_shoot  := $Timers/Shoot;
+@onready var timer_skill  := $Timers/Skill;
+@onready var timer_reload := $Timers/Reload;
 
 # Private methods
 func _dummy_skill(_p: Player) -> void:
@@ -60,6 +65,7 @@ func _reset_timeout(type: int) -> void:
     match type:
         0: _can_shoot = true;
         1: _can_skill = true;
+        2: _is_reloading = false; ammo = c.max_ammo;
 
 func _reload_vars() -> void:
     print("Player:", name, " reload_vars");
@@ -77,6 +83,7 @@ func _reload_vars() -> void:
     # Skills
     _shoot_func = Callable(c.skills_object, c.function_shoot);
     _skill_func = Callable(c.skills_object, c.function_skill);
+    _reload_func = Callable(c.skills_object, c.function_reload);
 
     # Stats
     health = c.max_health;
@@ -94,6 +101,7 @@ func shoot(consume: bool = true):
 @rpc(any_peer)
 func die():
     print("Player:", str(name), " died");
+    dead = true;
 
 func shoot_dmg(damage: int, consume: bool = true):
     var hit = shoot(consume);
@@ -108,7 +116,7 @@ func take_damage(damage):
         " dmg (", health, "/", c.max_health, ")");
     if health <= 0:
         print("health <= 0");
-        die();
+        rpc("die");
 
 # Lifecycle
 func _input(e: InputEvent) -> void:
@@ -146,6 +154,7 @@ func _process(dt: float) -> void:
         _crouch = Input.is_action_pressed("move_crouch", false);
         _shoot = Input.is_action_just_pressed("shoot", false);
         _skill = Input.is_action_just_pressed("skill", false);
+        _reload = Input.is_action_just_pressed("reload", false);
 
     var rot = _mouse_delta * dt * cam_look_sensitivity;
 
@@ -167,7 +176,7 @@ func _process(dt: float) -> void:
     collider.position.y = cur_height/2;
 
     # Skill logic
-    if _shoot and _can_shoot and ammo > 0:
+    if _shoot and _can_shoot and ammo > 0 and not _is_reloading:
         _shoot_func.call(self);
         _can_shoot = false;
         timer_shoot.start(c.timeout_shoot);
@@ -176,6 +185,11 @@ func _process(dt: float) -> void:
         _skill_func.call(self);
         _can_skill = false;
         timer_skill.start(c.timeout_skill);
+
+    if _reload and not _is_reloading:
+        _reload_func.call(self);
+        _is_reloading = true;
+        timer_reload.start(c.timeout_reload);
 
 func _physics_process(dt: float) -> void:
     if not syncro.is_multiplayer_authority() or dead:
