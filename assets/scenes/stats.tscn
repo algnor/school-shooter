@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://mdyne8rwpv33"]
+
+[ext_resource type="Texture2D" uid="uid://cnuhid37iolfr" path="res://assets/resources/Life Bars/Life Bars/Horizontal/Backs/Back6.png" id="1_b5baw"]
+[ext_resource type="Texture2D" uid="uid://cn41q0qnj2g3f" path="res://assets/resources/Life Bars/Life Bars/Horizontal/Boarders/Boarder1.png" id="2_1s5i5"]
+[ext_resource type="Texture2D" uid="uid://ce4yyhex0gvee" path="res://assets/resources/Life Bars/Life Bars/Horizontal/Bars/Bar1.png" id="3_a5bgw"]
+[ext_resource type="FontFile" uid="uid://bsjfb87fqxgdc" path="res://assets/fonts/hobo_std.otf" id="4_t5cp8"]
+
+[sub_resource type="Gradient" id="Gradient_bp0h6"]
+offsets = PackedFloat32Array(0, 0.0075188)
+colors = PackedColorArray(0, 0, 0, 1, 0.00172043, 0.100051, 0.509934, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vvl21"]
+gradient = SubResource("Gradient_bp0h6")
+
+[sub_resource type="Gradient" id="Gradient_7npc8"]
+offsets = PackedFloat32Array(0, 0.00451128)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fkah7"]
+gradient = SubResource("Gradient_7npc8")
+fill_to = Vector2(0.00854701, 0)
+
+[node name="Stats" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -73.0
+offset_right = 425.0
+offset_bottom = -23.0
+grow_vertical = 0
+value = 100.0
+rounded = true
+fill_mode = 1
+texture_under = ExtResource("1_b5baw")
+texture_over = ExtResource("2_1s5i5")
+texture_progress = ExtResource("3_a5bgw")
+
+[node name="Ammo" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 125.0
+offset_top = -123.0
+offset_right = 275.0
+offset_bottom = -83.0
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("4_t5cp8")
+theme_override_font_sizes/normal_font_size = 48
+text = "30/30"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Ability" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -123.0
+offset_right = 281.0
+offset_bottom = -73.0
+grow_vertical = 0
+value = 100.0
+fill_mode = 5
+texture_under = SubResource("GradientTexture2D_vvl21")
+texture_progress = SubResource("GradientTexture2D_fkah7")

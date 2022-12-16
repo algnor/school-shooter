@@ -2,7 +2,7 @@
 
 [ext_resource type="Environment" uid="uid://bpujiwiej4whg" path="res://assets/resources/Environment.tres" id="1_ldtuk"]
 [ext_resource type="Script" path="res://src/menu/PathFollow.gd" id="1_pmx1j"]
-[ext_resource type="PackedScene" uid="uid://du8qfs8l6ekyg" path="res://assets/scenes/map.tscn" id="3_itlps"]
+[ext_resource type="PackedScene" path="res://assets/scenes/Map.tscn" id="3_n6xc8"]
 
 [sub_resource type="Curve3D" id="Curve3D_nil7q"]
 bake_interval = 0.01
@@ -13,6 +13,7 @@ _data = {
 point_count = 35
 
 [node name="menu_background" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294804, -0.0624895, 0.15198)
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.686, 0)
@@ -27,4 +28,4 @@ script = ExtResource("1_pmx1j")
 transform = Transform3D(-1.00016, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1.00016, 0, 0, 0)
 environment = ExtResource("1_ldtuk")
 
-[node name="Map" parent="." instance=ExtResource("3_itlps")]
+[node name="Map" parent="." instance=ExtResource("3_n6xc8")]

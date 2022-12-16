@@ -1,13 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjlby8uvy8g67"]
+[gd_scene load_steps=6 format=3 uid="uid://cjlby8uvy8g67"]
 
 [ext_resource type="PackedScene" uid="uid://p8abdyig76fw" path="res://assets/scenes/options_menu.tscn" id="1_56w12"]
 [ext_resource type="PackedScene" uid="uid://3b6iy7fm3hqr" path="res://assets/scenes/pause_menu.tscn" id="2_ugphm"]
+[ext_resource type="PackedScene" path="res://assets/scenes/death_screen.tscn" id="3_blhiq"]
 [ext_resource type="AudioStream" uid="uid://duttsjcmklxnc" path="res://assets/sound/music/spetsarnas_fel.ogg" id="3_x7kl7"]
+[ext_resource type="PackedScene" path="res://assets/scenes/stats.tscn" id="4_6e5qb"]
 
 [node name="GUI" type="CanvasLayer"]
 
+[node name="Stats" parent="." instance=ExtResource("4_6e5qb")]
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="options_menu" parent="." instance=ExtResource("1_56w12")]
 visible = false
+
+[node name="DeathScreen" parent="." instance=ExtResource("3_blhiq")]
+visible = false
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="pause_menu" parent="." instance=ExtResource("2_ugphm")]
 visible = false
