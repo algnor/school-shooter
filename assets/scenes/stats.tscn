@@ -41,7 +41,6 @@ offset_bottom = -23.0
 grow_vertical = 0
 value = 100.0
 rounded = true
-fill_mode = 1
 texture_under = ExtResource("1_b5baw")
 texture_over = ExtResource("2_1s5i5")
 texture_progress = ExtResource("3_a5bgw")

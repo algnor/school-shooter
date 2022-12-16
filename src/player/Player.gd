@@ -79,6 +79,7 @@ func _reload_vars() -> void:
 
     # Mesh & Collider
     camera.position.y = c.eye_height;
+    # FIXME: player model does not work
     mesh_i.mesh = c.model_player;
     collider.shape.height = c.height;
     collider.position.y = c.height/2;

@@ -1,7 +1,15 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://pe8w0jo6t10r"]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://pe8w0jo6t10r"]
 
 [ext_resource type="Script" path="res://src/player/BaseCharacter.gd" id="1_nq6tf"]
 [ext_resource type="Script" path="res://src/player/JoakimSkills.gd" id="2_1puv8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpo24"]
+albedo_color = Color(0.980392, 0.498039, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l6iwb"]
+material = SubResource("StandardMaterial3D_hpo24")
+radius = 0.3
+height = 1.8
 
 [resource]
 script = ExtResource("1_nq6tf")
@@ -15,12 +23,13 @@ max_ammo = 30
 timeout_shoot = 0.3
 timeout_skill = 10.0
 timeout_reload = 2.0
-height = 2.0
-height_crouch = 1.5
-eye_height = 1.8
-eye_height_crouch = 1.2
+height = 1.8
+height_crouch = 1.2
+eye_height = 1.65
+eye_height_crouch = 0.9
 skills_object = ExtResource("2_1puv8")
 function_shoot = "_shoot"
 function_skill = "_skill"
 function_reload = "_reload"
+model_player = SubResource("CapsuleMesh_l6iwb")
 metadata/_editor_prop_ptr_skills_object = NodePath("")
