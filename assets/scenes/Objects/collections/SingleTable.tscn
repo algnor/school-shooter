@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcvxjsabf7uhy"]
+
+[ext_resource type="PackedScene" uid="uid://d24fsq7t7ykb5" path="res://assets/scenes/Objects/Tables/SmallTable.tscn" id="1_7cuua"]
+[ext_resource type="PackedScene" uid="uid://5qf7788g4pl1" path="res://assets/scenes/Objects/Chairs/OfficeChair.tscn" id="2_hxrct"]
+
+[node name="single table" type="Node3D"]
+
+[node name="small_table" parent="." instance=ExtResource("1_7cuua")]
+
+[node name="office-chair" parent="." instance=ExtResource("2_hxrct")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.41887e-08, 0, 0.1623)
