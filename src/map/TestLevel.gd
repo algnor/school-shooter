@@ -23,7 +23,7 @@ func add_player_character(id = 1):
     $Players.add_child(character);
     # FIXME: only works for host for some reason
     # moved down floor to keep clients from infinitely falling
-    character.position.y = 5;
+    # character.position.y = 5;
 
 func remove_player_character(id = 1):
     $Players.get_node(str(id)).queue_free()

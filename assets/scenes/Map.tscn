@@ -1,6 +1,5 @@
 [gd_scene load_steps=28 format=3 uid="uid://8fyqdc00jdrr"]
 
-[ext_resource type="PackedScene" uid="uid://bjeur1jfl21uy" path="res://assets/models/map.glb" id="1_bgnv0"]
 [ext_resource type="LightmapGIData" uid="uid://dfvesekj4bn14" path="res://assets/models/map_generated_files/Map.lmbake" id="1_up1af"]
 [ext_resource type="PackedScene" uid="uid://darxcgwfpwj0i" path="res://assets/scenes/Objects/Chairs/GreenSofa.tscn" id="3_hshu2"]
 [ext_resource type="PackedScene" uid="uid://8yep5ck44e2d" path="res://assets/scenes/Objects/Chairs/BlackSofa.tscn" id="4_fcny4"]
@@ -25,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://inci40a7fsgg" path="res://assets/models/cabinets/printer_table.glb" id="23_r51hb"]
 [ext_resource type="PackedScene" uid="uid://o2y77l7wdisv" path="res://assets/models/tables/lab_table.glb" id="24_1tx22"]
 [ext_resource type="PackedScene" uid="uid://c18ofbxqkh2l4" path="res://assets/scenes/Objects/Chairs/LibrarySofa.tscn" id="25_nvifh"]
+[ext_resource type="PackedScene" uid="uid://esjrorbbtq6b" path="res://assets/scenes/Objects/MapModel.tscn" id="26_cgom0"]
 [ext_resource type="PackedScene" uid="uid://37dxkhrxo45e" path="res://assets/scenes/Objects/Cabinets/CubeStorageWhite.tscn" id="26_l181v"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3m7uk"]
@@ -37,8 +37,6 @@ interior = true
 max_texture_size = 8192
 generate_probes_subdiv = 0
 light_data = ExtResource("1_up1af")
-
-[node name="map" parent="." instance=ExtResource("1_bgnv0")]
 
 [node name="lights" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09564, 0)
@@ -672,3 +670,5 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.685
 
 [node name="center table2" parent="." instance=ExtResource("9_khm45")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.52327, 0, 0.562067)
+
+[node name="map" parent="." instance=ExtResource("26_cgom0")]
