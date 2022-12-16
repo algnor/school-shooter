@@ -47,10 +47,6 @@ mesh = SubResource("PlaneMesh_7755m")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plane/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_sb5dq")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, -0.173459, 0.685501, 0, 0.969445, 0.245307, -0.707107, -0.173459, 0.685501, 9, 3, 9)
-current = true
-
 [node name="Players" type="Node3D" parent="."]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]

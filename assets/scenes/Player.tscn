@@ -1,27 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://cv3caf3xgym0r"]
+[gd_scene load_steps=7 format=3 uid="uid://cv3caf3xgym0r"]
 
 [ext_resource type="Script" path="res://src/player/Player.gd" id="1_dkb0d"]
+[ext_resource type="Resource" uid="uid://pe8w0jo6t10r" path="res://assets/resources/characters/joakim.tres" id="2_20gwn"]
 [ext_resource type="PackedScene" uid="uid://bu188s5y5444w" path="res://assets/scenes/pistol.tscn" id="2_yw4qi"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_tbwfq"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i8u2e"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ihj6i"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7v6p7"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ppoiy"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_cwtns"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/sync = true
+properties/1/path = NodePath(".:c")
+properties/1/spawn = true
+properties/1/sync = true
+properties/2/path = NodePath(".:rotation")
+properties/2/spawn = true
+properties/2/sync = true
+properties/3/path = NodePath("CameraOrbit:rotation")
+properties/3/spawn = true
+properties/3/sync = true
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_dkb0d")
+c = ExtResource("2_20gwn")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_tbwfq")
+mesh = SubResource("CapsuleMesh_i8u2e")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_ihj6i")
+shape = SubResource("CapsuleShape3D_7v6p7")
 
 [node name="CameraOrbit" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
@@ -30,8 +41,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 current = true
 
-[node name="Pistol" parent="CameraOrbit/Camera3D" instance=ExtResource("2_yw4qi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.274, -0.227, -0.324)
+[node name="Pistol" parent="CameraOrbit" instance=ExtResource("2_yw4qi")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.274, -0.227, 0.324)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_ppoiy")
+replication_config = SubResource("SceneReplicationConfig_cwtns")
