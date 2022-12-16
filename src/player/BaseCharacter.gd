@@ -8,6 +8,13 @@ class_name BaseCharacter
 @export var jump_velocity : float = 5.0;
 @export var crouch_speed : float = 0.1;
 
+@export_group("Stats")
+@export var max_health : int = 100;
+@export var max_ammo : int = 30;
+@export var timeout_shoot : float = 0.3;
+@export var timeout_skill : float = 10.0;
+@export var timeout_reload : float = 5.0;
+
 @export_group("Height")
 @export var height : float = 2.0;
 @export var height_crouch : float = 1.5;

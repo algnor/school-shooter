@@ -9,6 +9,11 @@ class_name Player
 @export_range(0, 90, 0.1, "radians") var cam_min_angle : float = PI/2;
 @export_range(0, 90, 0.1, "radians") var cam_max_angle : float = PI/2;
 
+@export_group("Multiplayer (Do not touch)")
+@export var health : int = 0 : set = _set_hp;
+@export var ammo : int = 0 : set = _set_ammo;
+@export var dead : bool = false;
+
 # Inputs
 var _mouse_delta : Vector2 = Vector2();
 var _move_vector : Vector2 = Vector2();
@@ -21,6 +26,18 @@ var _skill : bool = false;
 var _gravity = ProjectSettings.get_setting("physics/3d/default_gravity");
 var _shoot_func := Callable(self, "_dummy_skill");
 var _skill_func := Callable(self, "_dummy_skill");
+var _can_shoot : bool = true;
+var _can_skill : bool = true;
+
+func _set_hp(val: int) -> void:
+    if health != val:
+        print("Player:", name, " modified HP ", health, "->", val);
+    health = val;
+
+func _set_ammo(val: int) -> void:
+    if ammo != val:
+        print("Player:", name, " modified ammo ", ammo, "->", val);
+    ammo = val;
 
 # Nodes
 @onready var camera   := $CameraOrbit;
@@ -29,26 +46,71 @@ var _skill_func := Callable(self, "_dummy_skill");
 @onready var collider := $Collider;
 @onready var syncro   := $MultiplayerSynchronizer;
 @onready var gun      := $CameraOrbit/Pistol;
+@onready var ray      := $CameraOrbit/ShootRay;
 
+# Timers
+@onready var timer_shoot := $Timers/Shoot;
+@onready var timer_skill := $Timers/Skill;
+
+# Private methods
 func _dummy_skill(_p: Player) -> void:
     pass
 
+func _reset_timeout(type: int) -> void:
+    match type:
+        0: _can_shoot = true;
+        1: _can_skill = true;
+
 func _reload_vars() -> void:
+    print("Player:", name, " reload_vars");
     # NOTE: this does not work
     # if not c is BaseCharacter:
     #     printerr("ERROR: Invalid character provided");
     #     return;
 
+    # Mesh & Collider
     camera.position.y = c.eye_height;
-
     mesh_i.mesh = c.model_player;
-
     collider.shape.height = c.height;
     collider.position.y = c.height/2;
 
+    # Skills
     _shoot_func = Callable(c.skills_object, c.function_shoot);
     _skill_func = Callable(c.skills_object, c.function_skill);
 
+    # Stats
+    health = c.max_health;
+    ammo = c.max_ammo;
+
+# Public methods
+func shoot(consume: bool = true):
+    # TODO: shoot from weapon
+    if consume: ammo -= 1;
+    ray.force_raycast_update();
+    if ray.is_colliding():
+        print("hit: ", str(ray.get_collider().name));
+        return ray.get_collider();
+
+@rpc(any_peer)
+func die():
+    print("Player:", str(name), " died");
+
+func shoot_dmg(damage: int, consume: bool = true):
+    var hit = shoot(consume);
+    if hit is Player:
+        # hit.take_damage(damage);
+        hit.rpc("take_damage", damage);
+
+@rpc(any_peer)
+func take_damage(damage):
+    health -= damage;
+    print("Player:", name, " takes ", damage,
+        " dmg (", health, "/", c.max_health, ")");
+    if health <= 0:
+        print("health <= 0");
+        die();
+
+# Lifecycle
 func _input(e: InputEvent) -> void:
     if not syncro.is_multiplayer_authority():
         return;
@@ -60,7 +122,7 @@ func _enter_tree() -> void:
     $MultiplayerSynchronizer.set_multiplayer_authority(int(str(name)));
 
 func _ready() -> void:
-    print("Player.gd:", str(name), " ", GlobalVariables.camera_set);
+    print("Player.gd:", str(name), " ", syncro.is_multiplayer_authority());
 
     if not GlobalVariables.camera_set and syncro.is_multiplayer_authority():
         camera3d.current = true;
@@ -76,7 +138,7 @@ func _process(dt: float) -> void:
         return;
 
     # Input handling
-    if not GlobalVariables.paused:
+    if not GlobalVariables.paused and not dead:
         _move_vector = Input.get_vector("move_left", "move_right",
                                         "move_forward", "move_backward");
         _jump = Input.is_action_pressed("move_jump", false);
@@ -105,11 +167,18 @@ func _process(dt: float) -> void:
     collider.position.y = cur_height/2;
 
     # Skill logic
-    if _shoot: _shoot_func.call(self);
-    if _skill: _skill_func.call(self);
+    if _shoot and _can_shoot and ammo > 0:
+        _shoot_func.call(self);
+        _can_shoot = false;
+        timer_shoot.start(c.timeout_shoot);
+
+    if _skill and _can_skill:
+        _skill_func.call(self);
+        _can_skill = false;
+        timer_skill.start(c.timeout_skill);
 
 func _physics_process(dt: float) -> void:
-    if not syncro.is_multiplayer_authority():
+    if not syncro.is_multiplayer_authority() or dead:
         return;
 
     if not is_on_floor():
@@ -131,3 +200,6 @@ func _physics_process(dt: float) -> void:
         velocity.z = move_toward(velocity.z, 0, speed);
 
     move_and_slide();
+
+    if position.y < -100:
+        rpc("die");
