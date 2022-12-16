@@ -2,7 +2,7 @@
 
 [ext_resource type="Environment" uid="uid://bpujiwiej4whg" path="res://assets/resources/Environment.tres" id="1_ldtuk"]
 [ext_resource type="Script" path="res://src/menu/PathFollow.gd" id="1_pmx1j"]
-[ext_resource type="PackedScene" uid="uid://8fyqdc00jdrr" path="res://assets/scenes/Map.tscn" id="3_n6xc8"]
+[ext_resource type="PackedScene" path="res://assets/scenes/Map.tscn" id="3_n6xc8"]
 
 [sub_resource type="Curve3D" id="Curve3D_nil7q"]
 bake_interval = 0.01

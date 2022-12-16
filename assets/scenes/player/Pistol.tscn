@@ -1,0 +1,197 @@
+[gd_scene load_steps=15 format=3 uid="uid://cu2rhsau76ixe"]
+
+[ext_resource type="PackedScene" uid="uid://rpmrqr3m26e2" path="res://assets/models/Ultimate Gun Pack by Quaternius/Blends/Pistol_2.blend" id="1_4cnfy"]
+[ext_resource type="AudioStream" uid="uid://wx2hlv8cr4bq" path="res://assets/sound/shot.ogg" id="2_462ta"]
+[ext_resource type="Script" path="res://src/player/Pistol.gd" id="2_bq8iq"]
+[ext_resource type="Texture2D" uid="uid://dgqmq6ec5myny" path="res://assets/resources/particlePack_1.1/PNG (Transparent)/muzzle_01.png" id="3_jelc7"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fvbfu"]
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5j8jb"]
+transparency = 1
+albedo_color = Color(1, 0.67451, 0, 1)
+albedo_texture = ExtResource("3_jelc7")
+emission_enabled = true
+emission = Color(1, 0.67451, 0, 1)
+emission_energy_multiplier = 2.5
+
+[sub_resource type="QuadMesh" id="QuadMesh_bb3v5"]
+material = SubResource("StandardMaterial3D_5j8jb")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="Animation" id="Animation_lqi6g"]
+resource_name = "Kick"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol_2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 1.5708, 0.785398), Vector3(0, 1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pistol_2/Flash:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.01),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shell:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shot:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_cvshl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol_2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pistol_2/Flash:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shell:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shot:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_63q7s"]
+resource_name = "Reload"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol_2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 1.5708, -0.785398), Vector3(0, 1.5708, -0.785398), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ofmd"]
+_data = {
+"Kick": SubResource("Animation_lqi6g"),
+"RESET": SubResource("Animation_cvshl"),
+"Reload": SubResource("Animation_63q7s")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1mgp7"]
+direction = Vector3(1, 0, 1)
+gravity = Vector3(0, 0, 9)
+initial_velocity_min = 4.0
+initial_velocity_max = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbsfr"]
+albedo_color = Color(1, 0.67451, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tfflh"]
+material = SubResource("StandardMaterial3D_hbsfr")
+top_radius = 0.005
+bottom_radius = 0.005
+height = 0.025
+
+[node name="Pistol" instance=ExtResource("1_4cnfy")]
+script = ExtResource("2_bq8iq")
+
+[node name="Pistol_2" parent="." index="0"]
+transform = Transform3D(-7.23998e-07, 0, 0.2, 0, 0.2, 0, -0.2, 0, -7.23998e-07, 0, 0, 0)
+
+[node name="Flash" type="GPUParticles3D" parent="Pistol_2" index="0"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 4.37114e-08, 1, 1.64959, 0.584513, 7.21061e-08)
+emitting = false
+amount = 1
+lifetime = 0.1
+one_shot = true
+transform_align = 1
+trail_lifetime = 0.15
+process_material = SubResource("ParticleProcessMaterial_fvbfu")
+draw_pass_1 = SubResource("QuadMesh_bb3v5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_4ofmd")
+}
+
+[node name="Shell" type="GPUParticles3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.191248, -0.086821)
+emitting = false
+amount = 1
+lifetime = 0.15
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_1mgp7")
+draw_pass_1 = SubResource("CylinderMesh_tfflh")
+
+[node name="Shot" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("2_462ta")

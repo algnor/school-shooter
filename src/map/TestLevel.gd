@@ -18,7 +18,7 @@ func _ready():
         multiplayer.multiplayer_peer = multiplayer_peer;
 
 func add_player_character(id = 1):
-    var character = preload("res://assets/scenes/Player.tscn").instantiate();
+    var character = preload("res://assets/scenes/player/Player.tscn").instantiate();
     character.name = str(id);
     $Players.add_child(character);
     # FIXME: only works for host for some reason

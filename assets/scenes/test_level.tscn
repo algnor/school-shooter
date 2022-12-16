@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/map/TestLevel.gd" id="1_nukrj"]
 [ext_resource type="PackedScene" uid="uid://cjlby8uvy8g67" path="res://assets/scenes/GUI.tscn" id="1_ssba5"]
-[ext_resource type="PackedScene" uid="uid://8fyqdc00jdrr" path="res://assets/scenes/Map.tscn" id="3_bjvqx"]
+[ext_resource type="PackedScene" path="res://assets/scenes/Map.tscn" id="3_bjvqx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t064r"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -29,10 +29,10 @@ shadow_enabled = true
 
 [node name="GUI" parent="." instance=ExtResource("1_ssba5")]
 
-[node name="Players" type="Node3D" parent="."]
+[node name="Players" type="Node" parent="."]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://assets/scenes/Player.tscn")
+_spawnable_scenes = PackedStringArray("res://assets/scenes/player/Player.tscn")
 spawn_path = NodePath("../Players")
 
 [node name="Map" parent="." instance=ExtResource("3_bjvqx")]

@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://p8abdyig76fw" path="res://assets/scenes/options_menu.tscn" id="1_56w12"]
 [ext_resource type="PackedScene" uid="uid://3b6iy7fm3hqr" path="res://assets/scenes/pause_menu.tscn" id="2_ugphm"]
-[ext_resource type="PackedScene" uid="uid://dok5ni51t6750" path="res://assets/scenes/death_screen.tscn" id="3_blhiq"]
+[ext_resource type="PackedScene" path="res://assets/scenes/death_screen.tscn" id="3_blhiq"]
 [ext_resource type="AudioStream" uid="uid://duttsjcmklxnc" path="res://assets/sound/music/spetsarnas_fel.ogg" id="3_x7kl7"]
-[ext_resource type="PackedScene" uid="uid://mdyne8rwpv33" path="res://assets/scenes/stats.tscn" id="4_6e5qb"]
+[ext_resource type="PackedScene" path="res://assets/scenes/stats.tscn" id="4_6e5qb"]
 
 [node name="GUI" type="CanvasLayer"]
 
